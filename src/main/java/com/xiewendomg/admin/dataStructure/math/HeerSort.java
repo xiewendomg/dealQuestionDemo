@@ -29,7 +29,7 @@ public class HeerSort {
         heerSort(array);*/
         List<String> strs = new ArrayList<String>(16);
         List<Integer> ints = new ArrayList<Integer>(16);
-        List<Map<String, Object>> maps = new ArrayList<>(16);
+        List<Map<String, Object>> maps = new ArrayList(16);
         System.out.printf("%s,%s,%s,%s",
                 strs.size(),
                 strs.getClass() == ints.getClass(),
@@ -40,19 +40,19 @@ public class HeerSort {
 }
 class ThreadA extends Thread {
 
-    ThreadLocal<Integer> something = new ThreadLocal<>();
+    ThreadLocal<Integer> something = new ThreadLocal();
 
     public void run() {
         something.set(10);
         System.out.println(something.get()+"1");
 
-        new Thread(() -> {
+      /*  new Thread(() -> {
             System.out.println(something.get()+"2");
         }).run();
 
         new Thread(() -> {
             System.out.println(something.get()+"3");
-        }).start();
+        }).start();*/
     }
 
     public static void main(String... args) {
