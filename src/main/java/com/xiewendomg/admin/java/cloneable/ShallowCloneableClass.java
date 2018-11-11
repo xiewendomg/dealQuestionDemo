@@ -3,7 +3,7 @@ package com.xiewendomg.admin.java.cloneable;
 /**
  * 实现浅拷贝
  */
-public class ShallowCloneableClass implements Cloneable{
+public class ShallowCloneableClass  {
     public CopyTest data1=null;
     private double data2=0;
     public String data3=null;

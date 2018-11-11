@@ -19,6 +19,12 @@ public class DeepCloneableClass {
         System.out.println(data3);
         System.out.println(data4);
     }
+
+    /**
+     * 错误的深拷贝，没有使用高效率的native clone方法
+     * @return
+     * @throws CloneNotSupportedException
+     */
     @Override
     public Object clone() throws CloneNotSupportedException {
         CopyTest copyTest=new CopyTest(data1.userData);
