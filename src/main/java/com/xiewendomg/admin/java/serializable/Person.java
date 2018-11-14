@@ -1,16 +1,34 @@
 package com.xiewendomg.admin.java.serializable;
 
 import java.io.*;
+import java.lang.reflect.Field;
 
 /**
  * 测试序列化实体类
  */
-public class Person {
+public class Person implements Serializable{
     //一会就说这个是做什么的
     private static final long serialVersionUID = 1L;
-    String name;
-    int age;
-    public Person(String name,int age){
+    private static String name;
+    private int age;
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void setName(String name) {
+        Person.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Person(String name, int age){
         this.name = name;
         this.age = age;
     }
@@ -20,14 +38,14 @@ public class Person {
 
     public static void main   (String[] args) throws  Exception{
         File file = new File("d:/"+File.separator+"out.txt");
-
+        Person person = new Person("tom", 22);
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
             ObjectOutputStream oos = null;
             try {
                 oos = new ObjectOutputStream(fos);
-                Person person = new Person("tom", 22);
+
                 // 调用 person的 tostring() 方法
                 System.out.println(person);
                 //写入对象
@@ -58,9 +76,11 @@ public class Person {
             ObjectInputStream ois = null;
             try {
                 ois = new ObjectInputStream(fis);
+                Person.setName("ti");
+                person.setAge(121);
                 try {
-                    Person person = (Person)ois.readObject();   //读出对象
-                    System.out.println(person);
+                    Person person1 = (Person)ois.readObject();   //读出对象
+                    System.out.println(person1);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }

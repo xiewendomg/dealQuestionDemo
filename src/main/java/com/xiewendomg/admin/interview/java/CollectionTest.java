@@ -16,6 +16,5 @@ public class CollectionTest {
         hashSet.add("胖子");
         hashSet.add(null);
         System.out.println(hashSet);
-        new HashMap<>();
     }
 }
