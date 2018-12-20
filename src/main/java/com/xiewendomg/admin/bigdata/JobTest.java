@@ -19,7 +19,7 @@ public class JobTest {
         // "localhost:9000" 需要根据实际情况设置一下
         conf.set("mapred.job.tracker", "localhost:9000");
         // 一个hdfs文件系统中的 输入目录 及 输出目录
-        String[] ioArgs = new String[] { "input/score", "output" };
+        String[] ioArgs = new String[]{"input/score", "output"};
         String[] otherArgs = new GenericOptionsParser(conf, ioArgs).getRemainingArgs();
         if (otherArgs.length != 2) {
             System.err.println("Usage: Score Average <in> <out>");
@@ -44,4 +44,5 @@ public class JobTest {
         FileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
+
 }
