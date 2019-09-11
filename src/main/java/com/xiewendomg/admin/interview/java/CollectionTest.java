@@ -10,11 +10,10 @@ public class CollectionTest {
         testHashSet();
     }
 
-    private static void testHashSet(){
-        Set hashSet=new HashSet();
-        hashSet.add(null);
-        hashSet.add("胖子");
-        hashSet.add(null);
-        System.out.println(hashSet);
+    private static void testHashSet() {
+        Map map = new HashMap();
+        map.put("1", 2);
+        map.put("1", 3);
+        System.out.println(map.put("1", 5));
     }
 }

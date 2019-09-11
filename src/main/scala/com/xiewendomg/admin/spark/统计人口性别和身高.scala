@@ -1,9 +1,11 @@
 package com.xiewendomg.admin.spark
 
+import java.util
+
 import org.apache.spark.sql.SparkSession
 
-object 统计人口性别和身高 {
 
+object 统计人口性别和身高 {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().master("local[1]").appName("统计人口性别和身高").getOrCreate()
     //得到sparkContext
@@ -11,9 +13,11 @@ object 统计人口性别和身高 {
     //加载数据
     val dataRDD = sparkContext.textFile("D:/ideaProject/dealQuestionDemo/src/main/resources/peopleinfo.txt")
     //得到身高和性别的元组
+    val sum=1;
     val sexHeightRDD = dataRDD.map(line => line.split(",")).map(x => {
       val number = x(0)
       val sex = x(1)
+      println(sum+1)
       val height = x(2)
       (sex, height.toInt)
     })

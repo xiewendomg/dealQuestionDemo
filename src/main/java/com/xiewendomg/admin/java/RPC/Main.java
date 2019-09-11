@@ -21,21 +21,20 @@ public class Main {
 
         IVehical proxyObj = (IVehical)proxy.create(IVehical.class,car);
         proxyObj.run();*/
-       HelloService HelloService=new HelloServiceImpl();
-        VehicalProxy proxy = new VehicalProxy();
-        HelloService proxyObj = (HelloService)proxy.create(HelloService.class,HelloService);
-        proxyObj.sayHello("rec");
 
         HelloService HelloService1=new HelloServiceImpl();
         ProxyUser proxyUser =new ProxyUser();
         HelloService o = (HelloService) proxyUser.getProxy(HelloService.class,HelloService1);
         o.sayHello("rec");
 
+
+
+       HelloService HelloService=new HelloServiceImpl();
+        VehicalProxy proxy = new VehicalProxy();
+        HelloService proxyObj = (HelloService)proxy.create(HelloService.class,HelloService);
+        proxyObj.sayHello("rec");
+
+
+
     }
 }
-/*
- * output:
- * --before running...
- * Car is running
- * --after running...
- * */

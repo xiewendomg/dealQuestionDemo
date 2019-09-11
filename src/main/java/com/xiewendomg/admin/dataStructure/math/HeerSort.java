@@ -8,7 +8,7 @@ import java.util.*;
 public class HeerSort {
 
     public  static void heerSort(int[]  array){
-        int d=1;
+        int d=4;
         while (d>0){
             for (int i=0;i<array.length;i++){
                 for (int j=i;j+d<array.length;j+=d){
@@ -25,8 +25,8 @@ public class HeerSort {
     }
 
     public static void main(String[] args) {
-       /* int[] array={1,2,4,6,8,9,-1,0,-3,34,56,78,23,7};
-        heerSort(array);*/
+       int[] array={1,2,4,6,8,9,-1,0,-3,34,56,78,23,7};
+        heerSort(array);
         List<String> strs = new ArrayList<String>(16);
         List<Integer> ints = new ArrayList<Integer>(16);
         List<Map<String, Object>> maps = new ArrayList(16);

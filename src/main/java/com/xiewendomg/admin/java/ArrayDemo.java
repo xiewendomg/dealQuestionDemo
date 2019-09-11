@@ -1,7 +1,32 @@
 package com.xiewendomg.admin.java;
 
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class ArrayDemo {
+    private static int count=1;
     public static void main(String[] args) {
+
+        Set<Object> set=new TreeSet<Object>();
+
+
+
+        //会报错
+        set.add(4);
+        set.add("5");
+        set.add(2);
+        set.add(new Date());
+
+
+        for (Object s:set){
+            System.out.println(s);
+        }
+
+        count+=10;
+        System.out.println(count);
+
         //定义第一个数组
         int[] arr = new int[3];
         arr[0] = 88;

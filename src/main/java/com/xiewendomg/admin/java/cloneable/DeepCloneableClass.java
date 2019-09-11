@@ -27,6 +27,7 @@ public class DeepCloneableClass {
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
+        super.clone();
         CopyTest copyTest=new CopyTest(data1.userData);
         StringBuffer stringBuffer=new StringBuffer(data4.toString());
         return new DeepCloneableClass(copyTest,data2,data3,stringBuffer);

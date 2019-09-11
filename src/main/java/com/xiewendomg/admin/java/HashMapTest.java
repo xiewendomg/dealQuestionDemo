@@ -1,12 +1,17 @@
 package com.xiewendomg.admin.java;
 
+import javafx.scene.control.ProgressBar;
+import org.datanucleus.plugin.Bundle;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 测试hashMap 扩容机制
  */
-public class HashMapTest {
+public class HashMapTest extends Thread{
 
     public static void main(String[] args) throws Throwable {
         testHashMap();
@@ -17,13 +22,15 @@ public class HashMapTest {
     /**
      * 测试
      */
-    private static  void  testHashMap(){
+    private static  void  testHashMap() throws InterruptedException {
         Map map=new HashMap(4);
-        map.put(1,"1");
-        map.put(2,"2");
-        map.put(3,"3");
-        map.put(4,"4");
-        map.put(5,"5");
+        Thread thread=new HashMapTest();
+        Thread thread2= new HashMapTest();
+        thread.start();thread2.start();
+        while (thread.isAlive()||thread2.isAlive()){
+            System.out.println("sdfsd");
+        }
+        
     }
 
     /**
@@ -47,4 +54,11 @@ public class HashMapTest {
         System.out.println( -8 >> 1);
         System.out.println( -8 >>> 1);
     }
+
+    @Override
+    public void run() {
+        System.out.println("start");
+    }
+    ExecutorService mCachedThreadPool = Executors.newCachedThreadPool();
+
 }

@@ -9,8 +9,11 @@ object 中电健康云 {
     //创建spark
     val spark = SparkSession.builder().appName(APP_NAME).master("local[1]").getOrCreate()
     //得到sparkContext
+
     val sparkContext = spark.sparkContext
     val rdd = sparkContext.textFile("D:\\ideaProject\\dealQuestionDemo\\src\\main\\resources\\data.txt")
+    val test=rdd.map(x=>for(i <- 1 to 10000) yield i.toString)
+    test.collect().foreach(print)
     // 先分组，根据orderid分组，得到一个适合计算的元组
     val orderIdRdd = rdd.map(lines => {
       val array = lines.split(",")
