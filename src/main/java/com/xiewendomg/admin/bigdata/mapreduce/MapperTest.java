@@ -1,4 +1,4 @@
-package com.xiewendomg.admin.bigdata;
+package com.xiewendomg.admin.bigdata.mapreduce;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.hadoop.io.IntWritable;

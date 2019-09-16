@@ -1,4 +1,4 @@
-package com.xiewendomg.admin.bigdata;
+package com.xiewendomg.admin.bigdata.mapreduce;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

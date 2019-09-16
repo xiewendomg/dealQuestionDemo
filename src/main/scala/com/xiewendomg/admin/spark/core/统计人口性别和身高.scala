@@ -1,9 +1,4 @@
-package com.xiewendomg.admin.spark
-
-import java.util
-
-import org.apache.spark.sql.SparkSession
-
+package com.xiewendomg.admin.spark.core
 
 object 统计人口性别和身高 {
   def main(args: Array[String]): Unit = {

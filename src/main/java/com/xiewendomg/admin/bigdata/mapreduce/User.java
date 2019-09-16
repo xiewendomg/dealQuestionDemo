@@ -1,4 +1,4 @@
-package com.xiewendomg.admin.bigdata;
+package com.xiewendomg.admin.bigdata.mapreduce;
 
 public class User {
     private int age;

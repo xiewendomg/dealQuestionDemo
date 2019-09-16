@@ -1,4 +1,4 @@
-package com.xiewendomg.admin.bigdata;
+package com.xiewendomg.admin.bigdata.mapreduce;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
