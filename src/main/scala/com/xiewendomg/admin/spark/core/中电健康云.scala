@@ -54,19 +54,19 @@ object 中电健康云 {
 
 
     orderIdRdd.foreach(println)
-    //    orderIdRdd.foreach(println)
-    //    println(accumulator + "================================")
-    //    orderIdRdd.map(m => {
-    //      val orderId = m._1
-    //      //将商标和价格转化为Array数组 并且按价格进行降序排列取前1
-    //      accumulator.add(1)
-    //      val top1 = m._2.toArray.sortWith(_._2 > _._2).take(1)
-    //      (orderId, top1)
-    //
-    //    }).foreach(m => {
-    //      print(m._1 + "价格最高的商品为")
-    //      m._2.foreach(println)
-    //    })
+        orderIdRdd.foreach(println)
+        println(accumulator + "================================")
+        orderIdRdd.map(m => {
+          val orderId = m._1
+          //将商标和价格转化为Array数组 并且按价格进行降序排列取前1
+          accumulator.add(1)
+          val top1 = m._2.toArray.sortWith(_._2 > _._2).take(1)
+          (orderId, top1)
+
+        }).foreach(m => {
+          print(m._1 + "价格最高的商品为")
+          m._2.foreach(println)
+        })
     println(accumulator + "================================")
     sparkContext.stop()
 

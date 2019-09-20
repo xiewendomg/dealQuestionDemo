@@ -1,5 +1,7 @@
 package com.xiewendomg.admin.spark.core
 
+import org.apache.spark.sql.SparkSession
+
 object 统计人口性别和身高 {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().master("local[1]").appName("统计人口性别和身高").getOrCreate()

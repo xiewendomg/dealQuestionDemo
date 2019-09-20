@@ -3,7 +3,6 @@ package com.xiewendomg.admin.spark.stream
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-import org.apache.spark.{SparkConf, SparkContext}
 
 object 流处理累加 {
 
@@ -11,12 +10,12 @@ object 流处理累加 {
     Logger.getLogger("org").setLevel(Level.ERROR)
     val spark = SparkSession.builder().appName("test").master("local[1]").getOrCreate()
     //创建Streaming的对象
-    var sc = spark.sparkContext
-    var scc = new StreamingContext(sc, Seconds(5))
+    val sc = spark.sparkContext
+    val scc = new org.apache.spark.streaming.StreamingContext(sc, Seconds(1))
     scc.checkpoint("./")
     val addFunc = parseMethod _
     //监控源,并得到接收的数据
-    var lines = scc.socketTextStream("192.168.1.11", 19999)
+    var lines = scc.socketTextStream("192.168.1.11", 9999)
     //lines.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).print()
     lines.flatMap(_.split(" ")).map((_, 1)).updateStateByKey[Int](addFunc).print()
 
