@@ -8,11 +8,13 @@ object 中电健康云 {
   def main(args: Array[String]): Unit = {
     //创建spark
     val spark = SparkSession.builder().appName(APP_NAME).master("local[1]").getOrCreate()
+
     //得到sparkContext
     val sparkContext = spark.sparkContext
     val sparkSql = spark.sqlContext
     import sparkSql.implicits._
-    val rdd = sparkContext.textFile("D:\\ideaProject\\dealQuestionDemo\\src\\main\\resources\\data.txt")
+    val rdd = sparkContext.textFile("D:\\ideaProject\\dealQuestionDemo\\src\\main\\resources\\data.txt",2)
+    println(rdd.getNumPartitions)
     val test = rdd.map(x => for (i <- 1 to 10000) yield i.toString)
     var accumulator = sparkContext.accumulator(0)
     //    test.collect().foreach(print)
