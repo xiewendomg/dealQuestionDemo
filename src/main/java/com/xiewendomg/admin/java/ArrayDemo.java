@@ -8,9 +8,8 @@ import java.util.TreeSet;
 public class ArrayDemo {
     private static int count=1;
     public static void main(String[] args) {
-
+        System.out.println(7/2);
         Set<Object> set=new TreeSet<Object>();
-
 
 
         //会报错

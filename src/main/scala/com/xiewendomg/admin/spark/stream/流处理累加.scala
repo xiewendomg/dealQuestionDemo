@@ -2,7 +2,9 @@ package com.xiewendomg.admin.spark.stream
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.streaming.{Durations, Seconds, StreamingContext}
+
+import scala.concurrent.duration.Duration
 
 object 流处理累加 {
 
@@ -17,8 +19,8 @@ object 流处理累加 {
     //监控源,并得到接收的数据
     var lines = scc.socketTextStream("192.168.1.11", 9999)
     //lines.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).print()
-    lines.flatMap(_.split(" ")).map((_, 1)).updateStateByKey[Int](addFunc).print()
-
+    val word=lines.flatMap(_.split(" ")).map((_, 1)).window(Durations.seconds(3),Durations.seconds(1))
+    word.print()
     //启动
     scc.start()
     scc.awaitTermination()

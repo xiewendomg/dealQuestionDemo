@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 同一个类 lock 上锁了，其他地方就不会获得锁
  */
 public class LockDemo {
+
     private Lock lock=new ReentrantLock();
     private Lock lock2=new ReentrantLock();
     private void workOn(){

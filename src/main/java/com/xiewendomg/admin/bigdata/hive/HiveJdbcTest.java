@@ -5,6 +5,7 @@ import java.sql.*;
 public class HiveJdbcTest {
     private static String driverName =
             "org.apache.hive.jdbc.HiveDriver";
+
     public static void main(String[] args)
             throws SQLException {
         try {
