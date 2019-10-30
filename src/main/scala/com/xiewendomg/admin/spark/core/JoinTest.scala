@@ -1,5 +1,6 @@
 package com.xiewendomg.admin.spark.core
 
+import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
 
 object JoinTest {
@@ -9,11 +10,15 @@ object JoinTest {
 
     val conf = new SparkConf().setAppName("wordCount").setMaster("local[1]")
     val sc = new SparkContext(conf)
+    val sparkSql=new SQLContext(sc)
+    import sparkSql.implicits._
     sc.setLogLevel("ERROR")
     val words = Array("one", "two", "two", "three", "three", "three")
     val kvRdd = sc.parallelize(List((1, null), (1, "b"), (1, "c"), (2, "b"), (2, "c"), (3, "d")), 2)
     val kvRdd2 = sc.parallelize(List((1, "A"), (1, null), (1, "C"), (2, "B"), (2, "C"), (3, "D")), 2)
     val rdd = kvRdd.leftOuterJoin(kvRdd2);
+    rdd.toDS()
+    rdd.toDF()
     val sql =
       """
                你好 ，中国啊
@@ -32,7 +37,7 @@ object JoinTest {
     //    joinKVrdd.foreach(println)
     val fullOuterJoin = kvRdd.fullOuterJoin(kvRdd2);
 //    fullOuterJoin.combineByKeyWithClassTag()
-//    fullOuterJoin.groupByKey()
+    fullOuterJoin.groupByKey()
 //    fullOuterJoin.reduceByKey()
 //    fullOuterJoin.combineByKey()
 //    fullOuterJoin.aggregateByKey([]
